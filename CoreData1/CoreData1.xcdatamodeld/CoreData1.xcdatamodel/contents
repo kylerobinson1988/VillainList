@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Person" syncable="YES">
-        <attribute name="age" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="archrival" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="evilness" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="food" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="likes" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="loathes" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="Villain" representedClassName="PRODUCT_MODULE_NAME.Villain" syncable="YES">
+    <entity name="Villain" representedClassName="CoreData1.Villain" syncable="YES">
         <attribute name="age" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="archrival" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="coolness" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -19,7 +10,6 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Person" positionX="-36" positionY="9" width="128" height="150"/>
-        <element name="Villain" positionX="-36" positionY="18" width="128" height="150"/>
+        <element name="Villain" positionX="-18" positionY="90" width="128" height="150"/>
     </elements>
 </model>

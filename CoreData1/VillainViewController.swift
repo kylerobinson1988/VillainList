@@ -10,34 +10,16 @@ import UIKit
 import CoreData
 
 class VillainViewController: UIViewController, UITableViewDataSource {
+    
+    var managedContext: NSManagedObjectContext!
 
     @IBAction func addName(sender: AnyObject) {
-    
-        var alert = UIAlertController(title: "New name", message: "Add a new name", preferredStyle: .Alert)
         
-        let saveAction = UIAlertAction(title: "Save", style: .Default) { (action: UIAlertAction!) -> Void in
-            
-            let nameField = alert.textFields![0] as! UITextField
-            let ageField = alert.textFields![0] as! UITextField
-            nameField.placeholder = "Name"
-            self.saveName(nameField.text)
-            self.tableView.reloadData()
-            
-        }
+        let addVillainVC = storyboard?.instantiateViewControllerWithIdentifier("addVillainVC") as! AddVillainViewController
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Default) { (action: UIAlertAction!) -> Void in
-            
-            
-        }
+//        let name = 
         
-        alert.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
-            
-        }
-        
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        
-        presentViewController(alert, animated: true, completion: nil)
+        presentViewController(addVillainVC, animated: true, completion: nil)
         
     }
     
@@ -70,7 +52,7 @@ class VillainViewController: UIViewController, UITableViewDataSource {
         
         let managedContext = appDelegate.managedObjectContext
         
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest(entityName: "Villain")
         
         var error: NSError?
         
@@ -92,49 +74,54 @@ class VillainViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "\"Hypervillains\""
+        title = "Villains"
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 
     }
-
-    func saveName(name: String) {
+    
+    func addData() {
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let fetchRequest = NSFetchRequest(entityName: "Villain")
         
-        let managedContext = appDelegate.managedObjectContext!
+        fetchRequest.predicate = NSPredicate(format: "searchKey != nil")
         
-        let entity = NSEntityDescription.entityForName("Villain", inManagedObjectContext: managedContext)
+        let count = managedContext.countForFetchRequest(fetchRequest, error: nil)
         
-        let villain = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
+        if count > 0 { return }
         
-        villain.setValue(name, forKey: "name")
+        let path = NSBundle.mainBundle().pathForResource("SampleData", ofType: "plist")
         
-        var error: NSError?
-        if !managedContext.save(&error) {
+        let dataArray = NSArray(contentsOfFile: path!)!
+        
+        for dict: AnyObject in dataArray {
             
-            println("Could not save \(error), \(error?.userInfo)")
+            let entity = NSEntityDescription.entityForName("Villain", inManagedObjectContext: managedContext)
+            
+            let villain = Villain(entity: entity!, insertIntoManagedObjectContext: managedContext)
+            
+            let villainDict = dict as! NSDictionary
+            
+            villain.name = villainDict["name"] as! String
+//            villain.age =
             
         }
         
-        people.append(villain)
-        
     }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

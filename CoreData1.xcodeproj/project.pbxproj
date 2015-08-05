@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9127AF1D1B71556E005FB1CF /* VillainDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9127AF1C1B71556E005FB1CF /* VillainDetailViewController.swift */; };
-		9127AF1F1B718F84005FB1CF /* Villain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9127AF1E1B718F84005FB1CF /* Villain.swift */; };
+		9127AF231B726485005FB1CF /* Villain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9127AF221B726485005FB1CF /* Villain.swift */; };
+		9127AF581B72A1A3005FB1CF /* AddVillainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9127AF571B72A1A3005FB1CF /* AddVillainViewController.swift */; };
 		91A17F451B3ACDE10079ABA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A17F441B3ACDE10079ABA1 /* AppDelegate.swift */; };
 		91A17F481B3ACDE10079ABA1 /* CoreData1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91A17F461B3ACDE10079ABA1 /* CoreData1.xcdatamodeld */; };
 		91A17F4D1B3ACDE10079ABA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91A17F4B1B3ACDE10079ABA1 /* Main.storyboard */; };
@@ -30,7 +31,8 @@
 
 /* Begin PBXFileReference section */
 		9127AF1C1B71556E005FB1CF /* VillainDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VillainDetailViewController.swift; sourceTree = "<group>"; };
-		9127AF1E1B718F84005FB1CF /* Villain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Villain.swift; sourceTree = "<group>"; };
+		9127AF221B726485005FB1CF /* Villain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Villain.swift; path = ../Villain.swift; sourceTree = "<group>"; };
+		9127AF571B72A1A3005FB1CF /* AddVillainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVillainViewController.swift; sourceTree = "<group>"; };
 		91A17F3F1B3ACDE10079ABA1 /* CoreData1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreData1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91A17F431B3ACDE10079ABA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91A17F441B3ACDE10079ABA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +67,6 @@
 		91A17F361B3ACDE10079ABA1 = {
 			isa = PBXGroup;
 			children = (
-				9127AF1E1B718F84005FB1CF /* Villain.swift */,
 				91A17F411B3ACDE10079ABA1 /* CoreData1 */,
 				91A17F5A1B3ACDE10079ABA1 /* CoreData1Tests */,
 				91A17F401B3ACDE10079ABA1 /* Products */,
@@ -85,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				91A17F691B3AD7440079ABA1 /* VillainViewController.swift */,
+				9127AF571B72A1A3005FB1CF /* AddVillainViewController.swift */,
 				9127AF1C1B71556E005FB1CF /* VillainDetailViewController.swift */,
 				91A17F4B1B3ACDE10079ABA1 /* Main.storyboard */,
 				91A17F461B3ACDE10079ABA1 /* CoreData1.xcdatamodeld */,
@@ -96,6 +98,7 @@
 		91A17F421B3ACDE10079ABA1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9127AF221B726485005FB1CF /* Villain.swift */,
 				91A17F441B3ACDE10079ABA1 /* AppDelegate.swift */,
 				91A17F4E1B3ACDE10079ABA1 /* Images.xcassets */,
 				91A17F501B3ACDE10079ABA1 /* LaunchScreen.xib */,
@@ -223,8 +226,9 @@
 			files = (
 				91A17F6A1B3AD7440079ABA1 /* VillainViewController.swift in Sources */,
 				91A17F481B3ACDE10079ABA1 /* CoreData1.xcdatamodeld in Sources */,
+				9127AF581B72A1A3005FB1CF /* AddVillainViewController.swift in Sources */,
 				91A17F451B3ACDE10079ABA1 /* AppDelegate.swift in Sources */,
-				9127AF1F1B718F84005FB1CF /* Villain.swift in Sources */,
+				9127AF231B726485005FB1CF /* Villain.swift in Sources */,
 				9127AF1D1B71556E005FB1CF /* VillainDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -181,10 +181,10 @@
             </objects>
             <point key="canvasLocation" x="1692" y="325"/>
         </scene>
-        <!--Villain Detail View Controller-->
+        <!--Add Villain View Controller-->
         <scene sceneID="Sxp-8S-Xgw">
             <objects>
-                <viewController id="lBv-yY-HZ9" customClass="VillainDetailViewController" customModule="CoreData1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addVillainVC" id="lBv-yY-HZ9" customClass="AddVillainViewController" customModule="CoreData1" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m4l-Ur-4nY"/>
                         <viewControllerLayoutGuide type="bottom" id="xHO-ME-EXt"/>

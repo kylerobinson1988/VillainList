@@ -16,14 +16,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        let viewController = self.window!.rootViewController as!VillainViewController
 
-        let entity = NSEntityDescription.entityForName("Villains", inManagedObjectContext: managedObjectContext!)
-        
-        let villains = Villain(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
-        
-        villains.name = "The Villain's Name"
-        
-        managedObjectContext?.save(nil)
+        viewController.managedContext = self.managedObjectContext
+
+//        let entity = NSEntityDescription.entityForName("Villain", inManagedObjectContext: managedObjectContext!)
+//        
+//        let villain = Villain(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
+//
+//        villain.name = "Zoma"
+//        villain.likes = "Darkness"
+//        villain.loathes = "Loto"
+//        villain.age = 156720
+//        villain.archrival = "Legendary Hero"
+//        villain.evilness = true
+//        villain.coolness = 9.0
+//        
+//        managedObjectContext!.save(nil)
+//        
+//        let request = NSFetchRequest(entityName: "Villain")
+//        
+//        let villainCollection = managedObjectContext!.executeFetchRequest(request, error: nil) as! [Villain]
+//        
+//        let sample = villainCollection[0]
+//        
+//        println("Villain name: \(sample.name), age \(sample.age), likes \(sample.likes), loathes \(sample.loathes), archrival: \(sample.archrival). On a scale of 1 to 10, the villain's coolness is \(sample.coolness). ")
+//        
+//        if sample.evilness == true {
+//            
+//            println("\(sample.name) is definitely evil.")
+//
+//            
+//        } else {
+//            
+//            println("\(sample.name) is just misunderstood.")
+//            
+//        }
         
         
         

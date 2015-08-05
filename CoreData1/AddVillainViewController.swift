@@ -1,15 +1,15 @@
 //
-//  VillainDetailViewController.swift
+//  AddVillainViewController.swift
 //  CoreData1
 //
-//  Created by Kyle Brooks Robinson on 8/4/15.
+//  Created by Kyle Brooks Robinson on 8/5/15.
 //  Copyright (c) 2015 Kyle Brooks Robinson. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class VillainDetailViewController: UIViewController {
+class AddVillainViewController: UIViewController {
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var evilOrNotSegment: UISegmentedControl!
@@ -25,9 +25,9 @@ class VillainDetailViewController: UIViewController {
         super.viewDidLoad()
         
         
-
+        
     }
-
+    
     func saveName(name: String) {
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -63,21 +63,11 @@ class VillainDetailViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
         
     }
-
+    
     @IBAction func submitButtonPressed(sender: AnyObject) {
         
         
         
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
