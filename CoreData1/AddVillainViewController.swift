@@ -18,43 +18,79 @@ class AddVillainViewController: UIViewController {
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var coolnessTextField: UITextField!
     @IBOutlet weak var archrivalTextField: UITextField!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
+    var evilness = true
     var people = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillChangeFrameNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) -> Void in
+            
+            self.view.setNeedsUpdateConstraints()
+            self.view.setNeedsLayout()
+            
+            if let kbSize = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue().size{
+                
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                    
+                    self.bottomConstraint.constant = 20 + kbSize.height
+                    
+                })
+                
+            }
+            
+        }
         
+        NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardDidHideNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) -> Void in
+            
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                
+                self.bottomConstraint.constant = 20
+                
+            })
+            
+        }
         
     }
     
-    func saveName(name: String) {
+    
+    @IBAction func evilSegmentPressed(sender: UISegmentedControl) {
+        
+        switch sender.selectedSegmentIndex {
+            
+        case 0: evilness = true;
+            
+        case 1: evilness = false;
+            
+        default: break
+        
+        }
+        
+    }
+    
+    func saveName() {
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext!
         
-        let entity = NSEntityDescription.entityForName("Person", inManagedObjectContext: managedContext)
+        let entity = NSEntityDescription.entityForName("Villain", inManagedObjectContext: managedContext)
         
-        let villain = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
+        let villain = Villain(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
-        villain.setValue(nameTextField.text, forKey: "name")
-        villain.setValue(ageTextField.text, forKey: "age")
-        villain.setValue(likesTextField.text, forKey: "likes")
-        villain.setValue(loathesTextField.text, forKey: "loathes")
-        villain.setValue(archrivalTextField.text, forKey: "archrival")
-        villain.setValue(coolnessTextField.text, forKey: "food")
-        villain.setValue(evilOrNotSegment.selectedSegmentIndex, forKey: "evilness")
+        villain.name = nameTextField.text
+        villain.likes = likesTextField.text
+        villain.loathes = loathesTextField.text
+        villain.age = ageTextField.text.toInt()!
+        villain.archrival = archrivalTextField.text
+        villain.evilness = evilness
+        villain.coolness = NSString(string: coolnessTextField.text!).doubleValue
         
+        managedContext.save(nil)
         
-        var error: NSError?
-        if !managedContext.save(&error) {
-            
-            println("Could not save \(error), \(error?.userInfo)")
-            
-        }
-        
-        people.append(villain)
+        dismissViewControllerAnimated(true, completion: nil)
         
     }
     
@@ -66,7 +102,7 @@ class AddVillainViewController: UIViewController {
     
     @IBAction func submitButtonPressed(sender: AnyObject) {
         
-        
+        saveName()
         
     }
 

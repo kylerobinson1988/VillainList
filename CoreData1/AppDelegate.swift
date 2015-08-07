@@ -14,12 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        let viewController = self.window!.rootViewController as!VillainViewController
+        let navViewController = self.window!.rootViewController as! UINavigationController
+        
+        let villainVC = navViewController.viewControllers[0] as! VillainViewController
 
-        viewController.managedContext = self.managedObjectContext
+        villainVC.managedObjectContext = self.managedObjectContext
+        
+        ///// Yesterday
 
 //        let entity = NSEntityDescription.entityForName("Villain", inManagedObjectContext: managedObjectContext!)
 //        
@@ -34,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        villain.coolness = 9.0
 //        
 //        managedObjectContext!.save(nil)
-//        
+        
 //        let request = NSFetchRequest(entityName: "Villain")
 //        
 //        let villainCollection = managedObjectContext!.executeFetchRequest(request, error: nil) as! [Villain]

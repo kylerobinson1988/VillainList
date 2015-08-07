@@ -10,6 +10,8 @@
 		9127AF1D1B71556E005FB1CF /* VillainDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9127AF1C1B71556E005FB1CF /* VillainDetailViewController.swift */; };
 		9127AF231B726485005FB1CF /* Villain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9127AF221B726485005FB1CF /* Villain.swift */; };
 		9127AF581B72A1A3005FB1CF /* AddVillainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9127AF571B72A1A3005FB1CF /* AddVillainViewController.swift */; };
+		9127AF5A1B73B77E005FB1CF /* VillainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9127AF591B73B77E005FB1CF /* VillainCell.swift */; };
+		9127AF5C1B74FF05005FB1CF /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9127AF5B1B74FF05005FB1CF /* TestTableViewController.swift */; };
 		91A17F451B3ACDE10079ABA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A17F441B3ACDE10079ABA1 /* AppDelegate.swift */; };
 		91A17F481B3ACDE10079ABA1 /* CoreData1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91A17F461B3ACDE10079ABA1 /* CoreData1.xcdatamodeld */; };
 		91A17F4D1B3ACDE10079ABA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91A17F4B1B3ACDE10079ABA1 /* Main.storyboard */; };
@@ -33,6 +35,8 @@
 		9127AF1C1B71556E005FB1CF /* VillainDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VillainDetailViewController.swift; sourceTree = "<group>"; };
 		9127AF221B726485005FB1CF /* Villain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Villain.swift; path = ../Villain.swift; sourceTree = "<group>"; };
 		9127AF571B72A1A3005FB1CF /* AddVillainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVillainViewController.swift; sourceTree = "<group>"; };
+		9127AF591B73B77E005FB1CF /* VillainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VillainCell.swift; sourceTree = "<group>"; };
+		9127AF5B1B74FF05005FB1CF /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
 		91A17F3F1B3ACDE10079ABA1 /* CoreData1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreData1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91A17F431B3ACDE10079ABA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91A17F441B3ACDE10079ABA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,9 +90,11 @@
 			isa = PBXGroup;
 			children = (
 				91A17F691B3AD7440079ABA1 /* VillainViewController.swift */,
+				9127AF5B1B74FF05005FB1CF /* TestTableViewController.swift */,
 				9127AF571B72A1A3005FB1CF /* AddVillainViewController.swift */,
 				9127AF1C1B71556E005FB1CF /* VillainDetailViewController.swift */,
 				91A17F4B1B3ACDE10079ABA1 /* Main.storyboard */,
+				9127AF591B73B77E005FB1CF /* VillainCell.swift */,
 				91A17F461B3ACDE10079ABA1 /* CoreData1.xcdatamodeld */,
 				91A17F421B3ACDE10079ABA1 /* Supporting Files */,
 			);
@@ -227,9 +233,11 @@
 				91A17F6A1B3AD7440079ABA1 /* VillainViewController.swift in Sources */,
 				91A17F481B3ACDE10079ABA1 /* CoreData1.xcdatamodeld in Sources */,
 				9127AF581B72A1A3005FB1CF /* AddVillainViewController.swift in Sources */,
+				9127AF5A1B73B77E005FB1CF /* VillainCell.swift in Sources */,
 				91A17F451B3ACDE10079ABA1 /* AppDelegate.swift in Sources */,
 				9127AF231B726485005FB1CF /* Villain.swift in Sources */,
 				9127AF1D1B71556E005FB1CF /* VillainDetailViewController.swift in Sources */,
+				9127AF5C1B74FF05005FB1CF /* TestTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

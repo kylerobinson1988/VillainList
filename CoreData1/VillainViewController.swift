@@ -11,36 +11,80 @@ import CoreData
 
 class VillainViewController: UIViewController, UITableViewDataSource {
     
-    var managedContext: NSManagedObjectContext!
+    var managedObjectContext: NSManagedObjectContext!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var villainCollection = [Villain]()
 
     @IBAction func addName(sender: AnyObject) {
         
         let addVillainVC = storyboard?.instantiateViewControllerWithIdentifier("addVillainVC") as! AddVillainViewController
         
-//        let name = 
-        
         presentViewController(addVillainVC, animated: true, completion: nil)
         
     }
     
-    @IBOutlet weak var tableView: UITableView!
-    
-    var people = [NSManagedObject]()
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return people.count
+        return villainCollection.count
         
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("villainCell") as! VillainCell
         
-        let person = people[indexPath.row]
-        cell.textLabel!.text = person.valueForKey("name") as? String
+        let person = villainCollection[indexPath.row]
+        cell.name.text = person.valueForKey("name") as? String
         
         return cell
+        
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("villainCell") as! VillainCell
+        
+        println("You just touched the cell.")
+        
+        let villainToLoad = villainCollection[indexPath.row]
+        
+        let villainDetailVC = storyboard?.instantiateViewControllerWithIdentifier("villainDetailVC") as! VillainDetailViewController
+        
+        villainDetailVC.name = villainToLoad.name
+        villainDetailVC.age = Int(villainToLoad.age)
+        villainDetailVC.isEvil = Bool(villainToLoad.evilness)
+        villainDetailVC.likes = villainToLoad.likes
+        villainDetailVC.loathes = villainToLoad.loathes
+        villainDetailVC.archrival = villainToLoad.archrival
+        villainDetailVC.coolness = Double(villainToLoad.coolness)
+        
+        self.navigationController?.pushViewController(villainDetailVC, animated: true)
+        
+    }
+    
+    // Override to support conditional editing of the table view.
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    // Return NO if you do not want the specified item to be editable.
+    return true
+    }
+    
+    // Override to support editing the table view.
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            
+            let itemToDelete = villainCollection[indexPath.row]
+            
+            managedObjectContext.deleteObject(itemToDelete)
+            
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
+        }
         
     }
     
@@ -48,26 +92,7 @@ class VillainViewController: UIViewController, UITableViewDataSource {
 
         super.viewWillAppear(animated)
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
-        
-        let fetchRequest = NSFetchRequest(entityName: "Villain")
-        
-        var error: NSError?
-        
-        let fetchedResults = managedContext?.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
-        
-        if let results = fetchedResults {
-            
-            people = results
-            
-        } else {
-            
-            println("Could not fetch \(error), \(error!.userInfo)")
-            
-        }
-        
+        getData()
         
     }
     
@@ -75,36 +100,21 @@ class VillainViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
 
         title = "Villains"
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-
+        
     }
     
-    func addData() {
+    func getData() {
         
-        let fetchRequest = NSFetchRequest(entityName: "Villain")
+        let request = NSFetchRequest(entityName: "Villain")
         
-        fetchRequest.predicate = NSPredicate(format: "searchKey != nil")
+        let tentativeVillains = managedObjectContext!.executeFetchRequest(request, error: nil) as! [Villain]
         
-        let count = managedContext.countForFetchRequest(fetchRequest, error: nil)
+        villainCollection = tentativeVillains
         
-        if count > 0 { return }
+        tableView.reloadData()
         
-        let path = NSBundle.mainBundle().pathForResource("SampleData", ofType: "plist")
-        
-        let dataArray = NSArray(contentsOfFile: path!)!
-        
-        for dict: AnyObject in dataArray {
-            
-            let entity = NSEntityDescription.entityForName("Villain", inManagedObjectContext: managedContext)
-            
-            let villain = Villain(entity: entity!, insertIntoManagedObjectContext: managedContext)
-            
-            let villainDict = dict as! NSDictionary
-            
-            villain.name = villainDict["name"] as! String
-//            villain.age =
-            
-        }
+        println("Villain Collection!")
+        println(villainCollection)
         
     }
 
